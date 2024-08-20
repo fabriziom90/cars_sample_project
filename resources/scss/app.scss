@@ -1,0 +1,47 @@
+@import '~bootstrap/scss/bootstrap';
+
+@import './partials/variables';
+
+main{
+    width: calc(100% - 150px);
+}
+
+header{
+    background-color: $main-color;
+    padding: 20px 0;
+}
+
+#sidebar{
+    width: 150px;
+    height: 100vh;
+    background-color: $main-color;
+    color: $second-color;
+    border-right: 1px solid $second-color;
+    
+    .top-sidebar{
+        height: 75px;
+        padding: 10px 20px ;
+    }
+    
+    .bottom-sidebar{
+        height: calc(100% - 75px);
+        padding: 10px 20px;
+        
+        li{
+            padding: 10px 0;
+            
+            a{
+                color: $second-color;
+                text-decoration: none;
+                transition: text-decoration, 0.3s;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+
+
