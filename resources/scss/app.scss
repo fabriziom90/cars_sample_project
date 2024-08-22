@@ -4,6 +4,8 @@
 
 main{
     width: calc(100% - 150px);
+    height: 100vh;
+    overflow-y: auto;
 }
 
 header{

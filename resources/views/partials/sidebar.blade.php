@@ -11,7 +11,7 @@
                 <a href="#">Brands</a>
             </li>
             <li>
-                <a href="#">Optionals</a>
+                <a href="{{ route('optionals.index') }}">Optionals</a>
             </li>
         </ul>
     </div>
