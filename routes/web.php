@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PagesController as PagesController;
-use App\Http\Controllers\OptionalsController as OptionalsController;
+use App\Http\Controllers\OptionalController as OptionalController;
+use App\Http\Controllers\BrandController as BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +55,5 @@ use App\Http\Controllers\OptionalsController as OptionalsController;
 Route::get('/', [PagesController::class, 'index'])->name('homepage');
 Route::get('/about-me', [PagesController::class, 'about'])->name('about-me');
 
-Route::resource('optionals', OptionalsController::class);
+Route::resource('optionals', OptionalController::class);
+Route::resource('brands', BrandController::class);

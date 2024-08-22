@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateOptionalRequest;
 
 use App\Models\Optional;
 
-class OptionalsController extends Controller
+class OptionalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,6 +21,7 @@ class OptionalsController extends Controller
         $optionals = Optional::all();
 
         return view('optionals.index', compact('optionals'));
+        
     }
 
     /**

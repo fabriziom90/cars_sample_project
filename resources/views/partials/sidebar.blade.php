@@ -1,6 +1,8 @@
 <div id="sidebar">
     <div class="top-sidebar">
-        <h2>Logo</h2>
+        <a href="{{ route('homepage') }}">
+            <h2>Logo</h2>
+        </a>
     </div>
     <div class="bottom-sidebar">
         <ul class="list-unstyled">
@@ -8,10 +10,12 @@
                 <a href="#">Cars</a>
             </li>
             <li>
-                <a href="#">Brands</a>
+                <a class="{{ str_contains(Route::currentRouteName(), 'brands') ? 'active' : '' }}"
+                    href="{{ route('brands.index') }}">Brands</a>
             </li>
             <li>
-                <a href="{{ route('optionals.index') }}">Optionals</a>
+                <a class="{{ str_contains(Route::currentRouteName(), 'optionals') ? 'active' : '' }}"
+                    href="{{ route('optionals.index') }}">Optionals</a>
             </li>
         </ul>
     </div>
