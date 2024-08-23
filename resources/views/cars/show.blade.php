@@ -10,7 +10,7 @@
                 <ul class="list-unstyled" id="detail-car">
                     <li class="d-flex">
                         @if ($car->image_path != null)
-                            <img src="{{ asset('/storage/' . $car->iamge_path) }}" alt="{{ $car->model_name }}">
+                            <img width="300px" src="{{ asset('/storage/' . $car->image_path) }}" alt="{{ $car->model_name }}">
                         @else
                             <img src="https://placehold.co/300" alt="">
                         @endif

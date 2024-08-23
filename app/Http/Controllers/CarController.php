@@ -6,6 +6,8 @@ use App\Models\Car;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 
+use Illuminate\Support\Facades\Storage;
+
 class CarController extends Controller
 {
     /**
@@ -37,7 +39,22 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
+        $form_data = $request->all();
+        $form_data['used'] = !isset($form_data['used']) ? false : true;
         
+        $car = new Car();
+
+        // verifico se è presente logo
+        if($request->hasFile('image_path')){
+            // dichiaro una variabile che conterrà il path che mi viene generato dall'upload del file
+            $path = Storage::disk('public')->put('image_path', $form_data['image_path']);
+            $form_data['image_path'] = $path;
+        }
+
+        $car->fill($form_data);
+        $car->save();
+
+        return redirect()->route('cars.index')->with('message', 'Auto inserita correttamente');
     }
 
     /**

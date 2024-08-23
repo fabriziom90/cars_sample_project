@@ -16,13 +16,13 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('brands.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('cars.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row gy-3">
                 <div class="col-4">
                     <label for="model_name" class="control-label">Nome</label>
                     <input type="text" name="model_name" id="model_name" placeholder="Nome"
-                        class="form-control form-control-sm" value="{{ old('model_name') }}" required>
+                        class="form-control form-control-sm" value="{{ old('model_name') }}">
                     @error('model_name')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -38,7 +38,7 @@
                 <div class="col-4">
                     <label for="price" class="control-label">Prezzo</label>
                     <input type="number" min="0" placeholder="Prezzo" name="price" id="price"
-                        class="form-control form-control-sm" value="{{ old('price') }}" required>
+                        class="form-control form-control-sm" value="{{ old('price') }}">
                     @error('price')
                         <div class="text-danger">{{ $message }}
                         </div>
@@ -60,7 +60,7 @@
                 <div class="col-4">
                     <label for="km" class="control-label">Km</label>
                     <input type="number" min="0" placeholder="Km" id="km" name="km"
-                        class="form-control form-control-sm" value="{{ old('km') }}" required>
+                        class="form-control form-control-sm" value="{{ old('km') }}">
                     @error('km')
                         <div class="text-danger">{{ $message }}
                         </div>
@@ -77,8 +77,8 @@
                 </div>
                 <div class="col-4">
                     <label for="cubic_capacity" class="control-label">Cilindrata</label>
-                    <input type="number" min="0" max="5" placeholder="Cilindrata" id="cubic_capacity"
-                        name="cubic_capacity" class="form-control form-control-sm" value="{{ old('cubic_capacity') }}">
+                    <input type="number" min="0" placeholder="Cilindrata" id="cubic_capacity" name="cubic_capacity"
+                        class="form-control form-control-sm" value="{{ old('cubic_capacity') }}">
                     @error('cubic_capacity')
                         <div class="text-danger">{{ $message }}
                         </div>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-4">
                     <label for="transmission" class="control-label">Tipologia di cambio</label>
-                    <select name="transmission" id="transmission" class="form-select" required>
+                    <select name="transmission" id="transmission" class="form-select">
                         <option value="">Seleziona tipologia di cambio</option>
                         <option value="1">Manuale</option>
                         <option value="2">Automatico</option>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="col-4">
                     <label for="power_supply" class="control-label">Alimentazione</label>
-                    <select name="power_supply" id="power_supply" class="form-select" required>
+                    <select name="power_supply" id="power_supply" class="form-select">
                         <option value="">Seleziona alimentazione</option>
                         <option value="benzina">Benzina</option>
                         <option value="diesel">Diesel</option>

@@ -26,7 +26,7 @@ class StoreCarRequest extends FormRequest
         return [
             'model_name' => 'required|max:50',
             'price' => 'required|max_digits:10',
-            'used'  => 'required|boolean',
+            'used'  => 'boolean',
             'km'    => 'required',
             'ports_number'  => 'integer|max:5',
             'cubic_capacity'    => 'required',
@@ -41,7 +41,6 @@ class StoreCarRequest extends FormRequest
             'model_name.max'    => 'Il nome del modello deve essere al massimo di 50 caratteri',
             'price.required' => 'Il prezzo dell\'auto è obbligatorio',
             'price.max_digits' => 'Il prezzo può essere al massimo di 10 cifre',
-            'used.required' => 'Devi inserire se l\'auto è usata o meno',
             'used.boolean'  => 'L\'auto deve essere usata o no',
             'km.required'   => 'I km sono obbligatori',
             'ports_number.integer'  => 'Il numero di porte deve essere un valore intero',
