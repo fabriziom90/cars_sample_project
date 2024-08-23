@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-12">
-                <h2>Aggiungi nuovo brand</h2>
+                <h2>Aggiungi nuova auto</h2>
             </div>
         </div>
         @if ($errors->any())
@@ -18,19 +18,96 @@
         @endif
         <form action="{{ route('brands.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
+            <div class="row gy-3">
                 <div class="col-4">
-                    <label for="name" class="control-label">Nome</label>
-                    <input type="text" name="name" id="name" placeholder="Nome"
-                        class="form-control form-control-sm" value="{{ old('name') }}">
-                    @error('name')
+                    <label for="model_name" class="control-label">Nome</label>
+                    <input type="text" name="model_name" id="model_name" placeholder="Nome"
+                        class="form-control form-control-sm" value="{{ old('model_name') }}" required>
+                    @error('model_name')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="col-4">
-                    <label for="price" class="control-label">Logo</label>
-                    <input type="file" name="logo" id="logo" class="form-control form-control-sm">
-                    @error('logo')
+                    <label for="image_path" class="control-label">Immagine copertina</label>
+                    <input type="file" name="image_path" id="image_path" class="form-control form-control-sm">
+                    @error('image_path')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-4">
+                    <label for="price" class="control-label">Prezzo</label>
+                    <input type="number" min="0" placeholder="Prezzo" name="price" id="price"
+                        class="form-control form-control-sm" value="{{ old('price') }}" required>
+                    @error('price')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-4">
+                    <div class="mt-3">
+                        <input class="form-check-input " type="checkbox" value="1" id="used" name="used">
+                        <label class="form-check-label" for="used">
+                            Usata
+                        </label>
+
+                        @error('used')
+                            <div class="text-danger">{{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="km" class="control-label">Km</label>
+                    <input type="number" min="0" placeholder="Km" id="km" name="km"
+                        class="form-control form-control-sm" value="{{ old('km') }}" required>
+                    @error('km')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-4">
+                    <label for="ports_number" class="control-label">Numero di porte</label>
+                    <input type="number" min="0" max="5" placeholder="N° Porte" id="ports_number"
+                        name="ports_number" class="form-control form-control-sm" value="{{ old('ports_number') }}">
+                    @error('ports_number')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-4">
+                    <label for="cubic_capacity" class="control-label">Cilindrata</label>
+                    <input type="number" min="0" max="5" placeholder="Cilindrata" id="cubic_capacity"
+                        name="cubic_capacity" class="form-control form-control-sm" value="{{ old('cubic_capacity') }}">
+                    @error('cubic_capacity')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-4">
+                    <label for="transmission" class="control-label">Tipologia di cambio</label>
+                    <select name="transmission" id="transmission" class="form-select" required>
+                        <option value="">Seleziona tipologia di cambio</option>
+                        <option value="1">Manuale</option>
+                        <option value="2">Automatico</option>
+                    </select>
+
+                    @error('cubic_capacity')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-4">
+                    <label for="power_supply" class="control-label">Alimentazione</label>
+                    <select name="power_supply" id="power_supply" class="form-select" required>
+                        <option value="">Seleziona alimentazione</option>
+                        <option value="benzina">Benzina</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="ibrido">Ibrido</option>
+                        <option value="elettrico">Elettrico</option>
+                    </select>
+
+                    @error('cubic_capacity')
                         <div class="text-danger">{{ $message }}
                         </div>
                     @enderror

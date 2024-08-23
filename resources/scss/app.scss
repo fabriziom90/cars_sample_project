@@ -67,5 +67,19 @@ header{
     }
 }
 
+#detail-car{
+    li{
+        padding: 10px 0;
+    }
+    .left{
+        width: 15%;
+        border-right: 1px solid black;
+    }
+
+    .right{
+        width: 85%;
+        padding-left: 10px; 
+    }
+}
 
 

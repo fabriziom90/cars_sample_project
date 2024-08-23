@@ -7,24 +7,80 @@
                 <h2>Dettaglio auto</h2>
             </div>
             <div class="col-12">
-                <ul class="list-unstyled">
-                    <li>
+                <ul class="list-unstyled" id="detail-car">
+                    <li class="d-flex">
                         @if ($car->image_path != null)
                             <img src="{{ asset('/storage/' . $car->iamge_path) }}" alt="{{ $car->model_name }}">
                         @else
                             <img src="https://placehold.co/300" alt="">
                         @endif
                     </li>
-                    <li><strong>Nome: </strong>{{ $car->model_name }}</li>
-                    <li><strong>Prezzo: </strong>{{ $car->price }}</li>
-                    <li><strong>Usata:</strong> {{ $car->used ? 'Sì' : 'No' }}</li>
-                    <li><strong>Km:</strong>{{ $car->km }}</li>
+                    <li class="d-flex">
+                        <div class="left">
+                            <strong>Nome: </strong>
+                        </div>
+                        <div class="right">
+                            {{ ucfirst($car->model_name) }}
+                        </div>
+                    </li>
+                    <li class="d-flex">
+                        <div class="left">
+                            <strong>Prezzo: </strong>
+                        </div>
+                        <div class="right">
+                            {{ $car->price }}€
+                        </div>
+                    </li>
+                    <li class="d-flex">
+                        <div class="left">
+                            <strong>Usata:</strong>
+                        </div>
+                        <div class="right">
+                            {{ $car->used ? 'Sì' : 'No' }}
+                        </div>
+                    </li>
+                    <li class="d-flex">
+                        <div class="left">
+                            <strong>Km:</strong>
+                        </div>
+                        <div class="right">
+                            {{ $car->km }}
+                        </div>
+                    </li>
                     @if ($car->ports_number != null)
-                        <li><strong>Numero Porte</strong>{{ $car->ports_number }}</li>
+                        <li class="d-flex">
+                            <div class="left">
+                                <strong>Numero Porte</strong>
+                            </div>
+                            <div class="right">
+                                {{ $car->ports_number }}
+                            </div>
+                        </li>
                     @endif
-                    <li><strong>Cilindrata:</strong>{{ $car->cubic_capacity }}</li>
-                    <li><strong>Tipologia cambio:</strong>{{ $car->transmission }}</li>
-                    <li><strong>Tipologia alimentazione</strong>{{ $car->power_supply }}</li>
+                    <li class="d-flex">
+                        <div class="left">
+                            <strong>Cilindrata:</strong>
+                        </div>
+                        <div class="right">
+                            {{ $car->cubic_capacity }}
+                        </div>
+                    </li>
+                    <li class="d-flex">
+                        <div class="left">
+                            <strong>Tipologia cambio:</strong>
+                        </div>
+                        <div class="right">
+                            {{ $car->transmission == 1 ? 'Manuale' : 'Automatico' }}
+                        </div>
+                    </li>
+                    <li class="d-flex">
+                        <div class="left">
+                            <strong>Tipologia alimentazione:</strong>
+                        </div>
+                        <div class="right">
+                            {{ ucfirst($car->power_supply) }}
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
