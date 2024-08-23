@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController as PagesController;
 use App\Http\Controllers\OptionalController as OptionalController;
 use App\Http\Controllers\BrandController as BrandController;
+use App\Http\Controllers\CarController as CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ use App\Http\Controllers\BrandController as BrandController;
 // })->name('homepage');
 
 // Route::get('/about-me', function(){
-//     $name = 'Fabrizio Mastrobattista';
+//     $name = 'Tizio Caio';
 //     $videogames = [
 //         'The Witcher 3',
 //         'Bloodborne',
@@ -38,7 +39,7 @@ use App\Http\Controllers\BrandController as BrandController;
 // })->name('about-me');
 
 // Route::get('/about-me/{partner}', function(String $partner){
-//     $name = 'Fabrizio Mastrobattista';
+//     $name = 'Tizio Caio';
 //     $videogames = [
 //     ];
 
@@ -57,3 +58,4 @@ Route::get('/about-me', [PagesController::class, 'about'])->name('about-me');
 
 Route::resource('optionals', OptionalController::class);
 Route::resource('brands', BrandController::class);
+Route::resource('cars', CarController::class);

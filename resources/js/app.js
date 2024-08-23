@@ -48,3 +48,9 @@ const brand_tab = new DataTable('#brands-table', {
     language: languageIT,
     order: [[0, 'desc']]
 })
+
+const car_tab = new DataTable('#cars-table', {
+    responsive: true,
+    language: languageIT,
+    order: [[0, 'desc']]
+})

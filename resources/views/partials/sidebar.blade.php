@@ -7,7 +7,8 @@
     <div class="bottom-sidebar">
         <ul class="list-unstyled">
             <li>
-                <a href="#">Cars</a>
+                <a class="{{ str_contains(Route::currentRouteName(), 'cars') ? 'active' : '' }}"
+                    href="{{ route('cars.index') }}">Cars</a>
             </li>
             <li>
                 <a class="{{ str_contains(Route::currentRouteName(), 'brands') ? 'active' : '' }}"
