@@ -50,6 +50,9 @@ class BrandController extends Controller
             $path = Storage::disk('public')->put('logo', $form_data['logo']);
             $form_data['logo'] = $path;
         }
+        else{
+           $from_data['logo'] = 'https://picsum.photos/200/200?random=1';
+        }
 
         $brand->fill($form_data);
 
@@ -77,7 +80,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('brands.edit', compact('brand'));
     }
 
     /**
@@ -89,7 +92,21 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        $form_data = $request->all();
+
+        if($request->hasFile('logo')){
+
+            // verifico se in precedenza ho effettuato l'upload di un file. Se sì lo cancello dal file system.
+            if($brand->logo != null && !str_contains($brand->logo, 'https')){
+                Storage::disk('public')->delete($brand->logo);
+            }
+            // dichiaro una variabile che conterrà il path che mi viene generato dall'upload del file
+            $path = Storage::disk('public')->put('logo', $form_data['logo']);
+            $form_data['logo'] = $path;
+        }
+
+        $brand->update($form_data);
+        return redirect()->route('brands.index')->with('message', 'Brand modificato correttamente');
     }
 
     /**
@@ -100,6 +117,11 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        if($brand->logo != null){
+            Storage::disk('public')->delete($brand->logo);
+        }
+
+        $brand->delete();
+        return redirect()->route('brands.index')->with('message', 'Brand cancellato correttamente');
     }
 }

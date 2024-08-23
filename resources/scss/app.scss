@@ -55,5 +55,17 @@ header{
     }
 }
 
+.table-img-ctn{
+    width: 100px;
+    height: 100px;
+
+    img{
+        object-fit: cover;
+        object-position: 0px 0px;
+        max-height: 100%;
+        width: 100%;
+    }
+}
+
 
 

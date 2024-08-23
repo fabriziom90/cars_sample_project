@@ -33,11 +33,13 @@
                             <tr>
                                 <td>{{ $brand->id }}</td>
                                 <td>
-                                    @if (str_contains($brand->logo, 'https'))
-                                        <img src="{{ $brand->logo }}" width="100px">
-                                    @else
-                                        <img width="100px" src="{{ asset('/storage/' . $brand->logo) }}" alt="">
-                                    @endif
+                                    <div class="table-img-ctn">
+                                        @if (str_contains($brand->logo, 'https'))
+                                            <img src="{{ $brand->logo }}" width="100px">
+                                        @else
+                                            <img src="{{ asset('/storage/' . $brand->logo) }}" alt="">
+                                        @endif
+                                    </div>
                                 </td>
                                 <td>{{ $brand->name }}</td>
                                 <td>
@@ -65,5 +67,5 @@
             </div>
         </div>
     </div>
-    @include('optionals.components.modal_delete')
+    @include('brands.components.modal_delete')
 @endsection

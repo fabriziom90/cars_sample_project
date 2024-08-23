@@ -29,9 +29,8 @@
                 </div>
                 <div class="col-4">
                     <label for="price" class="control-label">Logo</label>
-                    <input type="file" name="logo" id="logo" class="form-control form-control-sm"
-                        value="{{ old('logo') }}">
-                    @error('price')
+                    <input type="file" name="logo" id="logo" class="form-control form-control-sm">
+                    @error('logo')
                         <div class="text-danger">{{ $message }}
                         </div>
                     @enderror

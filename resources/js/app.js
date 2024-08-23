@@ -42,3 +42,9 @@ const optionals_tab = new DataTable('#optionals-table', {
     language: languageIT,
     order: [[0, 'desc']]
 })
+
+const brand_tab = new DataTable('#brands-table', {
+    responsive: true,
+    language: languageIT,
+    order: [[0, 'desc']]
+})
