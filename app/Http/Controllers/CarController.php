@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Brand;
+use App\Models\Optional;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 
@@ -27,8 +29,12 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('cars.create');
+    {   
+        $brands = Brand::all();
+
+        $optionals = Optional::all();
+
+        return view('cars.create', compact('brands', 'optionals'));
     }
 
     /**
@@ -54,6 +60,11 @@ class CarController extends Controller
         $car->fill($form_data);
         $car->save();
 
+        // controllo che la richiesta abbia la chiave optionals
+        if($request->has('optionals')){
+            $car->optionals()->attach($form_data['optionals']);
+        }
+
         return redirect()->route('cars.index')->with('message', 'Auto inserita correttamente');
     }
 
@@ -76,7 +87,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        $brands = Brand::all();
     }
 
     /**
@@ -88,7 +99,15 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
-        //
+        // controllo che la richiesta abbia la chiave optionals
+        if($request->has('optionals')){
+            
+            $car->optionals()->sync($form_data['optionals']);
+        }
+        else{
+            $car->optionals()->sync([]);
+        }
+
     }
 
     /**

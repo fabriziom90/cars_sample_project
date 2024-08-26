@@ -28,6 +28,16 @@
                     @enderror
                 </div>
                 <div class="col-4">
+                    <div class="control-label">Marca</div>
+                    <select name="brand_id" id="brand_id" class="form-select form-select-sm" required>
+                        <option value="">Seleziona un brand per l'auto</option>
+                        {{-- ciclo i brand per visualizzare le options della select --}}
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}" @selected($brand->id == old('brand_id'))>{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-4">
                     <label for="image_path" class="control-label">Immagine copertina</label>
                     <input type="file" name="image_path" id="image_path" class="form-control form-control-sm">
                     @error('image_path')
@@ -112,7 +122,16 @@
                         </div>
                     @enderror
                 </div>
-                <div class="col-4">
+                <div class="col-12">
+                    @foreach ($optionals as $optional)
+                        <div class="form-check form-switch form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="optional-{{ $optional->id }}"
+                                name="optionals[]" value="{{ $optional->id }}" @checked(is_array(old('optionals')) && in_array($optional->id, old('optionals')))>
+                            <label class="form-check-label" for="inlineCheckbox1">{{ $optional->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-12">
                     <button class="btn btn-sm btn-success mt-4">Salva</button>
                 </div>
             </div>

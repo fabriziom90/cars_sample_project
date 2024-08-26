@@ -9,5 +9,13 @@ class Car extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['model_name', 'price', 'used', 'km', 'ports_number', 'cubic_capacity', 'transmission', 'power_supply', 'image_path'];
+    protected $fillable = ['model_name', 'brand_id', 'price', 'used', 'km', 'ports_number', 'cubic_capacity', 'transmission', 'power_supply', 'image_path'];
+
+    public function brand(){
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function optionals(){
+        return $this->belongsToMany(Optional::class);
+    }
 }

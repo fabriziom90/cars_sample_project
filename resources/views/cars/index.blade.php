@@ -24,6 +24,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Modello</th>
+                            <th>Brand</th>
                             <th>Usata/nuova</th>
                             <th>Prezzo</th>
                             <th>Km</th>
@@ -36,6 +37,7 @@
                             <tr>
                                 <td>{{ $car->id }}</td>
                                 <td>{{ $car->model_name }}</td>
+                                <td>{{ $car->brand ? $car->brand->name : 'Brand non specificato' }}</td>
                                 <td>{{ $car->used ? 'Sì' : 'No' }}</td>
                                 <td>{{ $car->price }}€</td>
                                 <td>{{ $car->km }}</td>

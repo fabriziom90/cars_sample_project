@@ -15,6 +15,12 @@
                             <img src="https://placehold.co/300" alt="">
                         @endif
                     </li>
+                    <li>
+                        <div class="d-flex">
+                            <div class="left"><strong>Brand: </strong></div>
+                            <div class="right">{{ $car->brand ? $car->brand->name : 'Brand non indicato' }}</div>
+                        </div>
+                    </li>
                     <li class="d-flex">
                         <div class="left">
                             <strong>Nome: </strong>

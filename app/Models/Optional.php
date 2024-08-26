@@ -10,4 +10,8 @@ class Optional extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'price'];
+
+    public function cars(){
+        return $this->belongsToMany(Car::class);
+    }
 }
