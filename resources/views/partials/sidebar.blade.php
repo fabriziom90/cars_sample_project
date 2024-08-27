@@ -1,6 +1,6 @@
 <div id="sidebar">
     <div class="top-sidebar">
-        <a href="{{ route('homepage') }}">
+        <a href="{{ route('dashboard') }}">
             <h2>Logo</h2>
         </a>
     </div>

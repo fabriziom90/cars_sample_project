@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 use App\Http\Controllers\PagesController as PagesController;
 use App\Http\Controllers\OptionalController as OptionalController;
@@ -13,49 +15,28 @@ use App\Http\Controllers\CarController as CarController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
 
-// Route::get('/', function () {
-//     return view('homepage');
-// })->name('homepage');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Route::get('/about-me', function(){
-//     $name = 'Tizio Caio';
-//     $videogames = [
-//         'The Witcher 3',
-//         'Bloodborne',
-//         'Elden Ring',
-//         'Red Dead Redemption 2',
-//         'Paperino Operazione Papero'
-//     ];
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-    
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-//     return view('about_me', compact('name', 'videogames'));
-//     // return view('about_me', ['gianfranco' => $name]);
-// })->name('about-me');
+    Route::get('/about-me', [PagesController::class, 'about'])->name('about-me');
+    Route::resource('optionals', OptionalController::class);
+    Route::resource('brands', BrandController::class);
+    Route::resource('cars', CarController::class);
+});
 
-// Route::get('/about-me/{partner}', function(String $partner){
-//     $name = 'Tizio Caio';
-//     $videogames = [
-//     ];
-
-    
-
-//     return view('about_me', compact('name', 'videogames', 'partner'));
-//     // return view('about_me', ['gianfranco' => $name]);
-// })->name('about-me-partner');;
-
-// Route::get('/ciccio', function(){
-//     return 'Questa è una pagina cicciosa';
-// });
-
-Route::get('/', [PagesController::class, 'index'])->name('homepage');
-Route::get('/about-me', [PagesController::class, 'about'])->name('about-me');
-
-Route::resource('optionals', OptionalController::class);
-Route::resource('brands', BrandController::class);
-Route::resource('cars', CarController::class);
+require __DIR__.'/auth.php';
